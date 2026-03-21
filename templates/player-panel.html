@@ -1,0 +1,97 @@
+<div class="chronoball-player-panel-content">
+  <section class="panel-card team-card">
+    <header class="card-header">
+      <div>
+        <p class="eyebrow">{{localize "CHRONOBALL.PlayerPanel.TeamNames"}}</p>
+        <h3 class="card-title">{{localize "CHRONOBALL.PlayerPanel.Rosters"}}</h3>
+      </div>
+      <div class="counts">
+        <span class="pill pill-a">A {{rosters.teamA.length}}/{{maxPlayersPerTeam}}</span>
+        <span class="pill pill-b">B {{rosters.teamB.length}}/{{maxPlayersPerTeam}}</span>
+      </div>
+    </header>
+
+    <div class="name-inputs">
+      <label class="input-chip pill-a">
+        <span>{{localize "CHRONOBALL.PlayerPanel.TeamAName"}}</span>
+        <input type="text" name="teamAName" value="{{state.teamAName}}" placeholder="{{localize "CHRONOBALL.PlayerPanel.TeamAName"}}">
+      </label>
+      <label class="input-chip pill-b">
+        <span>{{localize "CHRONOBALL.PlayerPanel.TeamBName"}}</span>
+        <input type="text" name="teamBName" value="{{state.teamBName}}" placeholder="{{localize "CHRONOBALL.PlayerPanel.TeamBName"}}">
+      </label>
+    </div>
+
+    <div class="roster-grid">
+      <div class="roster-column team-a">
+        <div class="roster-column-header">
+          <span class="pill pill-a">Team A</span>
+          <span class="roster-count">{{rosters.teamA.length}} / {{maxPlayersPerTeam}}</span>
+        </div>
+        <div class="roster-list">
+          {{#if rosters.teamA.length}}
+            {{#each rosters.teamA}}
+              <div class="roster-player">
+                <span class="player-dot pill-a"></span>
+                <span class="player-name">{{this.name}}</span>
+              </div>
+            {{/each}}
+          {{else}}
+            <div class="roster-empty">{{localize "CHRONOBALL.PlayerPanel.NoPlayers"}}</div>
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="roster-column team-b">
+        <div class="roster-column-header">
+          <span class="pill pill-b">Team B</span>
+          <span class="roster-count">{{rosters.teamB.length}} / {{maxPlayersPerTeam}}</span>
+        </div>
+        <div class="roster-list">
+          {{#if rosters.teamB.length}}
+            {{#each rosters.teamB}}
+              <div class="roster-player">
+                <span class="player-dot pill-b"></span>
+                <span class="player-name">{{this.name}}</span>
+              </div>
+            {{/each}}
+          {{else}}
+            <div class="roster-empty">{{localize "CHRONOBALL.PlayerPanel.NoPlayers"}}</div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel-card action-card">
+    <header class="card-header">
+      <div>
+        <p class="eyebrow">{{localize "CHRONOBALL.PlayerPanel.Actions"}}</p>
+        <h3 class="card-title">{{localize "CHRONOBALL.PlayerPanel.Title"}}</h3>
+      </div>
+    </header>
+
+    <div class="action-grid">
+      <div class="action-stack">
+        <p class="stack-title">{{localize "CHRONOBALL.PlayerPanel.Control"}}</p>
+        <div class="button-row">
+          <button type="button" class="set-carrier pill-a">{{localize "CHRONOBALL.PlayerPanel.SetCarrier"}}</button>
+          <button type="button" class="clear-carrier pill-muted">{{localize "CHRONOBALL.PlayerPanel.ClearCarrier"}}</button>
+        </div>
+      </div>
+
+      <div class="action-stack">
+        <p class="stack-title">{{localize "CHRONOBALL.PlayerPanel.MatchFlow"}}</p>
+        <div class="button-row">
+          <button type="button" class="determine-teams pill-muted">{{localize "CHRONOBALL.PlayerPanel.DetermineTeams"}}</button>
+          <button type="button" class="start-match pill-highlight">{{localize "CHRONOBALL.PlayerPanel.StartMatch"}}</button>
+          <button type="button" class="end-match pill-danger">{{localize "CHRONOBALL.PlayerPanel.EndMatch"}}</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-row">
+      <button type="button" class="save-settings pill-highlight">{{localize "CHRONOBALL.PlayerPanel.Save"}}</button>
+    </div>
+  </section>
+</div>
