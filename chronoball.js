@@ -233,10 +233,10 @@ class Chronoball {
     });
     
     // Hide commentary when no match is active on current scene
-    Hooks.on('renderChatMessage', (message, html) => {
+    Hooks.on('renderChatMessageHTML', (message, html) => {
       if (!ChronoballState.isMatchActiveOnCurrentScene()) {
-        const el = html[0] || html;
-        if (el.querySelector?.('.chronoball-chat-message')) {
+        const el = html instanceof HTMLElement ? html : html?.[0] || html;
+        if (el?.querySelector?.('.chronoball-chat-message')) {
           el.style.display = 'none';
         }
       }

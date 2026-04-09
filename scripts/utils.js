@@ -70,20 +70,45 @@ export class ChronoballUtils {
       const sourcePos = source.center ? source.center : {x: source.x, y: source.y};
       const targetPos = target.center ? target.center : {x: target.x, y: target.y};
 
-      // Ensure we have valid points to measure
       if (sourcePos.x == null || sourcePos.y == null || targetPos.x == null || targetPos.y == null) {
         console.warn("Chronoball | calculateDistance received invalid source or target", {source, target});
         return Infinity;
       }
 
       const pathData = canvas.grid.measurePath([sourcePos, targetPos]);
-      const distance = pathData.distance;
+      const distance = Number(pathData?.distance ?? pathData ?? Infinity);
 
       return Math.round(distance);
     } catch (e) {
       console.error("Chronoball | Error in calculateDistance:", e, {source, target});
       return Infinity;
     }
+  }
+
+  /**
+   * Calculate straight-line distance between two points or tokens in scene pixels.
+   */
+  static calculatePixelDistance(source, target) {
+    const sourcePos = source.center ? source.center : {x: source.x, y: source.y};
+    const targetPos = target.center ? target.center : {x: target.x, y: target.y};
+
+    if (sourcePos.x == null || sourcePos.y == null || targetPos.x == null || targetPos.y == null) {
+      return Infinity;
+    }
+
+    const dx = targetPos.x - sourcePos.x;
+    const dy = targetPos.y - sourcePos.y;
+    return Math.hypot(dx, dy);
+  }
+
+  /**
+   * Convert scene pixel distance to grid distance units (typically feet).
+   */
+  static pixelsToGridDistance(pixels) {
+    const gridSize = Number(canvas?.scene?.grid?.size ?? canvas?.grid?.size ?? 0);
+    const gridDistance = Number(canvas?.scene?.grid?.distance ?? canvas?.grid?.distance ?? 0);
+    if (!gridSize || !gridDistance) return Infinity;
+    return (pixels / gridSize) * gridDistance;
   }
 
   /**

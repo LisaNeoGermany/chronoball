@@ -12,9 +12,16 @@ export class ChronoballHUD {
   static initialize() {
     ChronoballUtils.log('Chronoball | HUD initialized');
     
-    // Listen for state changes
     Hooks.on('chronoball.stateChanged', () => {
+      this.mount();
       this.render();
+      this.updateVisibility();
+    });
+
+    Hooks.on('canvasReady', () => {
+      this.mount();
+      this.render();
+      this.updateVisibility();
     });
   }
   
@@ -22,7 +29,12 @@ export class ChronoballHUD {
    * Mount HUD to DOM
    */
   static mount() {
-    if (this.isMounted) return;
+    const existing = document.getElementById('chronoball-hud');
+    if (existing) {
+      this.element = existing;
+      this.isMounted = true;
+      return;
+    }
     
     this.element = document.createElement('div');
     this.element.id = 'chronoball-hud';
@@ -32,6 +44,7 @@ export class ChronoballHUD {
     
     this.isMounted = true;
     this.render();
+    this.updateVisibility();
     
     ChronoballUtils.log('Chronoball | HUD mounted');
   }
@@ -53,6 +66,7 @@ export class ChronoballHUD {
    * Render HUD content
    */
   static render() {
+    this.mount();
     if (!this.element) return;
     
     const state = ChronoballState.getMatchState();
@@ -138,5 +152,6 @@ export class ChronoballHUD {
     `;
     
     this.element.innerHTML = html;
+    this.updateVisibility();
   }
 }

@@ -103,7 +103,7 @@ export class ChronoballFumble {
         const rolls = await actor.rollSavingThrow(
           { ability: saveType, target: dc },
           {},
-          { create: false }
+          { create: false, mode: CONST.DICE_ROLL_MODES.PRIVATE }
         );
         return rolls?.[0] || null;
       } catch (error) {
