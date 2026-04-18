@@ -9,25 +9,34 @@
   },
   "authors": [
     {
-      "name": "TimRoesler"
+      "name": "TimRoesler",
+      "flags": {}
+    },
+    {
+      "name": "Dimensionarium",
+      "flags": {}
     }
   ],
   "esmodules": [
     "chronoball.js"
   ],
   "styles": [
-    "styles/chronoball.css"
+    {
+      "src": "styles/chronoball.css"
+    }
   ],
   "languages": [
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+      "flags": {}
     },
     {
       "lang": "de",
       "name": "Deutsch",
-      "path": "lang/de.json"
+      "path": "lang/de.json",
+      "flags": {}
     }
   ],
   "socket": true,
@@ -35,7 +44,13 @@
   "manifest": "https://github.com/LisaNeoGermany/chronoball/releases/latest/download/module.json",
   "download": "https://github.com/LisaNeoGermany/chronoball/releases/latest/download/chronoball.zip",
   "relationships": {
-    "systems": [{"id": "dnd5e"}],
-    "requires": []
-  }
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "flags": {}
 }
