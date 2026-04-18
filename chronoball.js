@@ -349,25 +349,25 @@ class Chronoball {
         name: 'Chronoball: Ball werfen',
         type: 'script',
         command: 'game.chronoball.throwBall();',
-        img: 'icons/svg/target.svg'
+        img: 'modules/chronoball/assets/icons/chrono_throw.png'
       },
       {
         name: 'Chronoball: Pass',
         type: 'script',
         command: 'game.chronoball.passBall();',
-        img: 'icons/svg/combat.svg'
+        img: 'modules/chronoball/assets/icons/chrono_pass.png'
       },
       {
         name: 'Chronoball: Ball aufnehmen',
         type: 'script',
         command: 'game.chronoball.pickupBall();',
-        img: 'icons/svg/item-bag.svg'
+        img: 'modules/chronoball/assets/icons/chrono_pickup.png'
       },
       {
         name: 'Chronoball: Ball fallen lassen',
         type: 'script',
         command: 'game.chronoball.dropBall();',
-        img: 'icons/svg/falling.svg'
+        img: 'modules/chronoball/assets/icons/chrono_drop.png'
       }
     ];
     
